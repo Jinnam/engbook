@@ -1,0 +1,116 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.blog.beast4307.service.LibMapper">
+	
+	
+	
+	<!-- 회비 납부 안한 회원정보 가져오기 -->
+	<select id="memberSelect" resultType="com.blog.beast4307.service.Member">
+		SELECT 
+			MEMBERID, 
+			MEMBERNAME, 
+			MEMBERPHONE, 
+			MEMBERADDR 
+		FROM 
+			member
+ 		WHERE 
+			MEMBERPAYMENTSTATUS='N';
+	</select>
+	
+	<!-- 회비 납부 확인 후 회비납부상태 업데이트 -->
+	<update id="memberPayUpdate" parameterType="Map">
+		UPDATE
+			member
+		SET
+			MEMBERPAYMENTSTATUS="Y"
+		WHERE
+			MEMBERID=#{MEMBERID};
+	</update>
+	
+	<!-- 회원가입시 도서관 목록 가져오기 -->
+	<select id="librarySelect" resultType="com.blog.beast4307.service.Lib">
+		SELECT
+			LIBCODE,
+			LIBNAME,
+			LIBLOCATION
+		FROM lib
+	</select>
+	
+	<!-- 회원가입 INSERT -->
+ 	<insert id="memberInsert" parameterType="com.blog.beast4307.service.Member">
+ 		INSERT INTO member(
+			MEMBERID,
+			MEMBERPW,
+			MEMBERNAME,
+			MEMBERBIRTHDAY,
+			MEMBERPHONE,
+			MEMBERADDR,
+			JOINDAY,
+			LIBCODE,
+			MEMBERPAYMENTSTATUS
+ 		)VALUES(
+	 		#{MEMBERID},
+	 		#{MEMBERPW},
+	 		#{MEMBERNAME},
+	 		#{MEMBERBIRTHDAY},
+	 		#{MEMBERPHONE},
+	 		#{MEMBERADDR},
+	 		CURDATE(),
+	 		#{LIBCODE},
+	 		#{MEMBERPAYMENTSTATUS}
+ 		)
+ 	</insert>
+ 	<!-- 도서관 등록 -->
+ 	<insert id="libraryInsert" parameterType="com.blog.beast4307.service.Lib">
+		INSERT INTO lib(
+			LIBNAME,
+			LIBLOCATION
+		)VALUES(
+			#{LIBNAME},
+			#{LIBLOCATION}
+		)
+ 	</insert>
+ 	
+ 	<!-- 도서등록 -->
+	<insert id="bookInsert" parameterType="com.blog.beast4307.service.Books">
+		INSERT INTO books(
+			LIBCODE,
+			BOOKNAME,
+			WRITER,
+			PUBLISHER,
+			CATEGORY,
+			GENRE,
+			BOOKLOCATION,
+			CURRENTSTATUS,
+			RENTALCOUNT,
+			RENTALDAYS
+		)VALUES(
+			#{LIBCODE},
+			#{BOOKNAME},
+			#{WRITER},
+			#{PUBLISHER},
+			#{CATEGORY},
+			#{GENRE},
+			#{BOOKLOCATION},
+			#{CURRENTSTATUS},
+			#{RENTALCOUNT},
+			#{RENTALDAYS}			
+		)
+
+	</insert> 	
+	
+	
+ 	<!-- 로그인 위해 아이디 비밀번호 가져오기 -->
+ 	<select id="loginSelect" parameterType="String" resultType="com.blog.beast4307.service.Member">
+ 		SELECT
+ 			MEMBERID,
+ 			MEMBERPW
+ 		FROM 
+ 			member
+ 		WHERE
+ 			MEMBERID=#{ID} 
+ 	</select>
+ 	
+</mapper>

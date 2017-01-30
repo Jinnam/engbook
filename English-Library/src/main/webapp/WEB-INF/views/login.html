@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="css/agency.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+	header {
+		background-image: url('./library1.jpg');
+		background-size: cover;
+		text-align: center;
+		color: white;
+		height:800px;
+}
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      position:absolute;
+      clear:left;
+      width:1680px;
+      float:left;
+      left:0;
+      bottom:0px;
+    }
+    #mainbody {
+    
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+    <header>
+        <div id="mainbody" align="center">
+        	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <table>
+                	<tr>
+                		<td align="center">ID</td>
+                		<td><input type="text" style="color:black"/></td><br/>
+                	</tr>
+                	<tr>
+                		<td>PASSWORD</td>
+                		<td><input type="password" style="color:black"/></td>
+                	</tr>
+                	<tr>
+                		<td colspan="2" align="right">
+                		<button class="btn btn-warning">로그인</button>
+                		</td>
+                	</tr>
+                </table>
+        </div>
+    </header>
+
+<footer>
+<div align="center">
+	<p>전북 전주시 덕진구 조봉동 조봉도서관 123-3
+	<p>Tel : 063-717-1008  Email: jobong@jobonglibrary.com</p>
+	<p>계좌번호 : KS은행 123-123-123-123 도서관장 조봉연</p>
+  </div>
+</footer>
+</body>
+</html>
