@@ -16,7 +16,7 @@ public interface LibService {
 	//회원 목록
 	List<Member> selectMember();
 	//회원 목록 업데이트(회비 냄)
-	int updatePayMember(List<Member> member);
+	int updatePayMember(String[] MEMBERID);
 	//도서관 목록 가져오기
 	List<Lib> selectLibrary();
 }

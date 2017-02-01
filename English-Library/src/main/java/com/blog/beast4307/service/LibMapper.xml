@@ -20,7 +20,7 @@
 	</select>
 	
 	<!-- 회비 납부 확인 후 회비납부상태 업데이트 -->
-	<update id="memberPayUpdate" parameterType="Map">
+	<update id="memberPayUpdate" parameterType="String">
 		UPDATE
 			member
 		SET

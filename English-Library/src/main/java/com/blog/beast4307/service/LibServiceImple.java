@@ -64,15 +64,10 @@ public class LibServiceImple implements LibService {
 
 	//회원 상태 업데이트(회비 확인 후 승인)
 	@Override
-	public int updatePayMember(List<Member> memberList) {
+	public int updatePayMember(String[] MEMBERID) {
 		int result=0;
-		Map<String, String> memberMap = new HashMap<String, String>();
-		for(int i=0;i<memberList.size();i++){
-			if(memberList.get(i).getMEMBERPAYMENTSTATUS()=="Y"){
-				memberMap.put("MEMBERID", memberList.get(i).getMEMBERID());
-				logger.info("memberMap service"+memberMap.toString());
-				result=dao.updatePayMember(memberMap);
-			}
+		for(int i=0;i<MEMBERID.length;i++){
+			result=dao.updatePayMember(MEMBERID[i]);
 		}
 		
 		return result;

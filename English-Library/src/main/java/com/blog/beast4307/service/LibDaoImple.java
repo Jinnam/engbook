@@ -44,9 +44,9 @@ public class LibDaoImple implements LibDao {
 
 	//입금 확인 후 입금상태 업데이트
 	@Override
-	public int updatePayMember(Map<String, String> memberMap) {
+	public int updatePayMember(String MEMBERID) {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NS+"memberPayUpdate",memberMap);
+		return sqlSession.update(NS+"memberPayUpdate", MEMBERID);
 	}
 
 	//도서관 목록 가져오기
