@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.blog.beast4307.service.Books;
 import com.blog.beast4307.service.Lib;
@@ -22,8 +23,6 @@ public class LibController {
 	@Autowired
 	private LibService libService;
 	Lib lib = new Lib();
-	
-	
 
 	//회원 목록 가져오기(회비 안낸 회원)
 	@RequestMapping(value="/approval")
@@ -35,11 +34,9 @@ public class LibController {
 	}
 	//회원 목록 업데이트(회비 냄)
 	@RequestMapping(value="/approval", method=RequestMethod.POST)
-	public String updatePayMember(List<Member> memberList){
-		logger.debug("나오나?");
-		libService.updatePayMember(memberList);
-		logger.info(memberList.toString());
-		return "redirect://approval";
+	public String updatePayMember(@RequestParam(value="MEMBERID") String[] MEMBERID){
+		libService.updatePayMember(MEMBERID);
+		return "redirect:approval";
 	}
 	
 	//도서 추가 폼 이동
@@ -67,6 +64,7 @@ public class LibController {
 	}
 	
 	//로그인 폼 이동
+	@SessionAttribute(id="aaa")
 	@RequestMapping(value="/login")
 	public String login(){
 		return "login";
