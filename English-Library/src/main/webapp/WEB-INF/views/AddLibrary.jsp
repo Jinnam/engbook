@@ -16,11 +16,11 @@
 			<table class="table" style="color:black; width:50%" align="center">
 				<tr>
 					<td>도서관이름</td>
-					<td><input type="text" name="LIBNAME"/></td>
+					<td><input type="text" name="libName"/></td>
 				</tr>
 				<tr>
 					<td>도서관 위치</td>
-					<td><input type="text" name="LIBLOCATION"/></td>
+					<td><input type="text" name="libLocation"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right"><button type="submit" class="btn btn-default">등록</button></td>

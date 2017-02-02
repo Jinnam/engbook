@@ -25,11 +25,11 @@
 					</tr>
 					<c:forEach var="member" items="${list}">
 						<tr>
-							<td>${member.MEMBERID }</td>
-							<td>${member.MEMBERNAME }</td>
-							<td>${member.PHONE1}-${member.PHONE2}-${member.PHONE3}</td>
-							<td>${member.MEMBERADDR }</td>
-							<td><input type="checkbox" name="MEMBERID" value="${member.MEMBERID }"/></td>
+							<td>${member.memberId }</td>
+							<td>${member.memberName }</td>
+							<td>${member.phone1}-${member.phone2}-${member.phone3}</td>
+							<td>${member.memberAddr }</td>
+							<td><input type="checkbox" name="memberId" value="${member.memberId }"/></td>
 						</tr>
 					</c:forEach>
 					<tr>

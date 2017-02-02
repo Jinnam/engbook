@@ -1,104 +1,105 @@
 package com.blog.beast4307.service;
 
 public class Member {
-	private String MEMBERID;
-	private String MEMBERPW;
-	private String MEMBERNAME;
-	private int MEMBERBIRTHDAY;
-	private String MEMBERPHONE;
-	private String PHONE1;
-	private String PHONE2;
-	private String PHONE3;
-	private String MEMBERADDR;
-	private String JOINDAY;
-	private int LIBCODE;
-	private int RENTALCOUNT;
-	private String MEMBERPAYMENTSTATUS;
-	
-	public String getPHONE1() {
-		return PHONE1;
+	private String memberId;
+	private String memberPw;
+	private String memberName;
+	private int memberBirthDay;
+	private String memberPhone;
+	private String phone1;
+	private String phone2;
+	private String phone3;
+	private String memberAddr;
+	private String joinDay;
+	private int libCode;
+	private int rentalCount;
+	private char memberPaymentStatus;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setPHONE1(String pHONE1) {
-		PHONE1 = pHONE1;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public String getPHONE2() {
-		return PHONE2;
+	public String getMemberPw() {
+		return memberPw;
 	}
-	public void setPHONE2(String pHONE2) {
-		PHONE2 = pHONE2;
+	public void setMemberPw(String memberPw) {
+		this.memberPw = memberPw;
 	}
-	public String getPHONE3() {
-		return PHONE3;
+	public String getMemberName() {
+		return memberName;
 	}
-	public void setPHONE3(String pHONE3) {
-		PHONE3 = pHONE3;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public String getMEMBERID() {
-		return MEMBERID;
+	public int getMemberBirthDay() {
+		return memberBirthDay;
 	}
-	public void setMEMBERID(String mEMBERID) {
-		MEMBERID = mEMBERID;
+	public void setMemberBirthDay(int memberBirthDay) {
+		this.memberBirthDay = memberBirthDay;
 	}
-	public String getMEMBERPW() {
-		return MEMBERPW;
+	public String getMemberPhone() {
+		return memberPhone;
 	}
-	public void setMEMBERPW(String mEMBERPW) {
-		MEMBERPW = mEMBERPW;
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
-	public String getMEMBERNAME() {
-		return MEMBERNAME;
+	public String getPhone1() {
+		return phone1;
 	}
-	public void setMEMBERNAME(String mEMBERNAME) {
-		MEMBERNAME = mEMBERNAME;
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
 	}
-	public int getMEMBERBIRTHDAY() {
-		return MEMBERBIRTHDAY;
+	public String getPhone2() {
+		return phone2;
 	}
-	public void setMEMBERBIRTHDAY(int mEMBERBIRTHDAY) {
-		MEMBERBIRTHDAY = mEMBERBIRTHDAY;
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
 	}
-	public String getMEMBERPHONE() {
-		return MEMBERPHONE;
+	public String getPhone3() {
+		return phone3;
 	}
-	public void setMEMBERPHONE(String mEMBERPHONE) {
-		MEMBERPHONE = mEMBERPHONE;
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
 	}
-	public String getMEMBERADDR() {
-		return MEMBERADDR;
+	public String getMemberAddr() {
+		return memberAddr;
 	}
-	public void setMEMBERADDR(String mEMBERADDR) {
-		MEMBERADDR = mEMBERADDR;
+	public void setMemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
 	}
-	public String getJOINDAY() {
-		return JOINDAY;
+	public String getJoinDay() {
+		return joinDay;
 	}
-	public void setJOINDAY(String jOINDAY) {
-		JOINDAY = jOINDAY;
+	public void setJoinDay(String joinDay) {
+		this.joinDay = joinDay;
 	}
-	public int getLIBCODE() {
-		return LIBCODE;
+	public int getLibCode() {
+		return libCode;
 	}
-	public void setLIBCODE(int lIBCODE) {
-		LIBCODE = lIBCODE;
+	public void setLibCode(int libCode) {
+		this.libCode = libCode;
 	}
-	public int getRENTALCOUNT() {
-		return RENTALCOUNT;
+	public int getRentalCount() {
+		return rentalCount;
 	}
-	public void setRENTALCOUNT(int rENTALCOUNT) {
-		RENTALCOUNT = rENTALCOUNT;
+	public void setRentalCount(int rentalCount) {
+		this.rentalCount = rentalCount;
 	}
-	public String getMEMBERPAYMENTSTATUS() {
-		return MEMBERPAYMENTSTATUS;
+	public char getMemberPaymentStatus() {
+		return memberPaymentStatus;
 	}
-	public void setMEMBERPAYMENTSTATUS(String mEMBERPAYMENTSTATUS) {
-		MEMBERPAYMENTSTATUS = mEMBERPAYMENTSTATUS;
+	public void setMemberPaymentStatus(char memberPaymentStatus) {
+		this.memberPaymentStatus = memberPaymentStatus;
 	}
 	@Override
 	public String toString() {
-		return "Member [MEMBERID=" + MEMBERID + ", MEMBERPW=" + MEMBERPW + ", MEMBERNAME=" + MEMBERNAME
-				+ ", MEMBERBIRTHDAY=" + MEMBERBIRTHDAY + ", MEMBERPHONE=" + MEMBERPHONE + ", MEMBERADDR=" + MEMBERADDR
-				+ ", JOINDAY=" + JOINDAY + ", LIBCODE=" + LIBCODE + ", RENTALCOUNT=" + RENTALCOUNT
-				+ ", MEMBERPAYMENTSTATUS=" + MEMBERPAYMENTSTATUS + "]";
+		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
+				+ ", memberBirthDay=" + memberBirthDay + ", memberPhone=" + memberPhone + ", phone1=" + phone1
+				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", memberAddr=" + memberAddr + ", joinDay=" + joinDay
+				+ ", libCode=" + libCode + ", rentalCount=" + rentalCount + ", memberPaymentStatus="
+				+ memberPaymentStatus + "]";
 	}
+	
 	
 }

@@ -1,7 +1,6 @@
 package com.blog.beast4307.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +43,9 @@ public class LibDaoImple implements LibDao {
 
 	//입금 확인 후 입금상태 업데이트
 	@Override
-	public int updatePayMember(String MEMBERID) {
+	public int updatePayMember(String memberId) {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NS+"memberPayUpdate", MEMBERID);
+		return sqlSession.update(NS+"memberPayUpdate", memberId);
 	}
 
 	//도서관 목록 가져오기
@@ -55,5 +54,27 @@ public class LibDaoImple implements LibDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+"librarySelect");
 	}
+
+	//Admin정보 가져오기
+	@Override
+	public Admin selectAdmin(String adminId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"adminSelect",adminId);
+	}
+	//rent 멤버 정보 가져오기
+	@Override
+	public Member rentMemberSelect(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"rentMemberSelect",memberId);
+	}
+
+	//rent 도서 정보 가져오기
+	@Override
+	public Books rentBookSelect(String bookCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"rentBookSelect",bookCode);
+	}
+	
+	
 
 }

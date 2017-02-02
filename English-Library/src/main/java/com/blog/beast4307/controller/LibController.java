@@ -2,6 +2,8 @@ package com.blog.beast4307.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.blog.beast4307.service.Admin;
 import com.blog.beast4307.service.Books;
 import com.blog.beast4307.service.Lib;
 import com.blog.beast4307.service.LibService;
@@ -23,19 +26,71 @@ public class LibController {
 	@Autowired
 	private LibService libService;
 	Lib lib = new Lib();
-
+	
+	
+	//도서 대여 폼 이동
+	@RequestMapping(value="/rentbook")
+	public String rentBook(){
+		return "RentBook";
+	}
+	
+	//도서 대여 액션
+	@RequestMapping(value="/rentbook", method=RequestMethod.POST)
+	public String rentBook(Books books){
+		
+		return "redirect:RentBook";
+	}
+	//rent 도서 정보 조회
+	@RequestMapping(value="/selectbook", method=RequestMethod.POST)
+	public @ResponseBody Books selectRentBook(@RequestParam("bookCode") String bookCode){
+		Books returnBook = libService.rentBookSelect(bookCode);
+		logger.info(returnBook.toString());
+		return returnBook;
+	}
+	
+	//rent 멤버 정보 조회
+	@RequestMapping(value="/rentmember", method=RequestMethod.POST)
+	public @ResponseBody Member selectRentMember(@RequestParam("memberId") String memberId){
+		Member returnMember = libService.rentMemberSelect(memberId);
+		return returnMember;
+	}
+	//도서 반납 폼 이동
+	@RequestMapping(value="/returnbook")
+	public String returnBook(){
+		return "ReturnBook";
+	}
+		
+	//도서 반납 액션
+	@RequestMapping(value="/returnbook", method=RequestMethod.POST)
+	public String returnBook(Books books){
+			
+		return "redirect:ReturnBook";
+	}
+	//도서폐기 폼 이동
+	@RequestMapping(value="/deletebook")
+	public String deleteBook(){
+		return "DeleteBook";
+	}
+		
+	//도서 폐기 액션
+	@RequestMapping(value="/deletebook", method=RequestMethod.POST)
+	public String deleteBook(Books books){
+			
+		return "redirect:DeleteBook";
+	}
+	
 	//회원 목록 가져오기(회비 안낸 회원)
 	@RequestMapping(value="/approval")
 	public String selectMember(Model model){
 		List<Member> list = libService.selectMember();
 		model.addAttribute("list",list);
-		logger.info("Controller approval: "+list.toString());
+		logger.info(list.toString());
 		return "ApprovalMember";
 	}
 	//회원 목록 업데이트(회비 냄)
 	@RequestMapping(value="/approval", method=RequestMethod.POST)
-	public String updatePayMember(@RequestParam(value="MEMBERID") String[] MEMBERID){
-		libService.updatePayMember(MEMBERID);
+	public String updatePayMember(@RequestParam(value="memberId") String[] memberId){
+		libService.updatePayMember(memberId);
 		return "redirect:approval";
 	}
 	
@@ -64,16 +119,36 @@ public class LibController {
 	}
 	
 	//로그인 폼 이동
-	@SessionAttribute(id="aaa")
 	@RequestMapping(value="/login")
 	public String login(){
 		return "login";
 	}
 	//로그인 액션
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(RequestParam ID, RequestParam PW){
+	public String login(Admin admin, HttpSession session){
+		logger.info(admin.toString());
+		String result="";
+		Admin resultAdmin = libService.selectAdmin(admin);
+		logger.info(resultAdmin.toString());
+		//리턴값 1: 성공, 2: 비번불일치, 3: 아이디 불일치
+		if(resultAdmin.getResult()==1){
+			session.setAttribute("adminId", resultAdmin.getAdminId());
+			session.setAttribute("libCode", resultAdmin.getLibCode());
+			session.setAttribute("result", resultAdmin.getResult());
+			result="AddLibrary";
+		}else{
+			result="redirect:login";
+		}
+		return result;
+
 		
-		return "";
+	}
+	
+	//로그아웃
+	@RequestMapping(value="/logout")
+	public String logoutAction(HttpSession session){
+		session.invalidate();
+		return "login";
 	}
 	
 	//index로 이동(회원가입)

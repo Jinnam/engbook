@@ -3,7 +3,45 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.blog.beast4307.service.LibMapper">
+
+	<!-- 대여 : 회원정보 가져오기  -->
 	
+	<select id="rentMemberSelect" parameterType="String" resultType="com.blog.beast4307.service.Member">
+		SELECT 
+			MEMBERNAME, 
+			MEMBERPHONE 
+		FROM 
+			member
+		WHERE
+			MEMBERID=#{memberId}
+	</select>
+	
+	<!-- 대여 : 도서정보 가져오기 -->
+	<select id="rentBookSelect" parameterType="String" resultType="com.blog.beast4307.service.Books">
+		SELECT
+			BOOKNAME,
+			WRITER,
+			PUBLISHER,
+			CATEGORY,
+			GENRE,
+			BOOKLOCATION
+		FROM
+			books
+		WHERE
+			BOOKCODE=#{bookCode}
+	</select>
+
+	<!-- Admin 정보 가져오기 -->
+	<select id="adminSelect" parameterType="String" resultType="com.blog.beast4307.service.Admin">
+		SELECT
+			ADMINID,
+			ADMINPW,
+			LIBCODE
+		FROM
+			admin
+		WHERE
+			ADMINID=#{adminId}
+	</select>
 	
 	
 	<!-- 회비 납부 안한 회원정보 가져오기 -->
@@ -24,9 +62,9 @@
 		UPDATE
 			member
 		SET
-			MEMBERPAYMENTSTATUS="Y"
+			MEMBERPAYMENTSTATUS='Y'
 		WHERE
-			MEMBERID=#{MEMBERID};
+			MEMBERID=#{memberId}
 	</update>
 	
 	<!-- 회원가입시 도서관 목록 가져오기 -->
@@ -51,15 +89,15 @@
 			LIBCODE,
 			MEMBERPAYMENTSTATUS
  		)VALUES(
-	 		#{MEMBERID},
-	 		#{MEMBERPW},
-	 		#{MEMBERNAME},
-	 		#{MEMBERBIRTHDAY},
-	 		#{MEMBERPHONE},
-	 		#{MEMBERADDR},
+	 		#{memberId},
+	 		#{memberPw},
+	 		#{memberName},
+	 		#{memberBirthDay},
+	 		#{memberPhone},
+	 		#{memberAddr},
 	 		CURDATE(),
-	 		#{LIBCODE},
-	 		#{MEMBERPAYMENTSTATUS}
+	 		#{libCode},
+	 		#{memberPaymentStatus}
  		)
  	</insert>
  	<!-- 도서관 등록 -->
@@ -68,8 +106,8 @@
 			LIBNAME,
 			LIBLOCATION
 		)VALUES(
-			#{LIBNAME},
-			#{LIBLOCATION}
+			#{libName},
+			#{libLocation}
 		)
  	</insert>
  	
@@ -87,16 +125,16 @@
 			RENTALCOUNT,
 			RENTALDAYS
 		)VALUES(
-			#{LIBCODE},
-			#{BOOKNAME},
-			#{WRITER},
-			#{PUBLISHER},
-			#{CATEGORY},
-			#{GENRE},
-			#{BOOKLOCATION},
-			#{CURRENTSTATUS},
-			#{RENTALCOUNT},
-			#{RENTALDAYS}			
+			#{libCode},
+			#{bookName},
+			#{writer},
+			#{publisher},
+			#{category},
+			#{genre},
+			#{bookLocation},
+			#{currentStatus},
+			#{rentalCount},
+			#{rentalDays}			
 		)
 
 	</insert> 	
@@ -110,7 +148,7 @@
  		FROM 
  			member
  		WHERE
- 			MEMBERID=#{ID} 
+ 			MEMBERID=#{memberId} 
  	</select>
  	
 </mapper>

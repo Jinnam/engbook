@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,7 +43,7 @@
 					 </a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/addbook">도서등록</a></li>
-							<li><a href="#">도서폐기</a></li>
+							<li><a href="/deletebook">도서폐기</a></li>
 					    </ul>
 				</li>
 				<li role="presentation" class="dropdown">
@@ -50,8 +51,8 @@
 					대여/반납<span class="caret"></span>
 					 </a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">도서대여</a></li>
-							<li><a href="#">도서반납</a></li>
+							<li><a href="/rentbook">도서대여</a></li>
+							<li><a href="/returnbook">도서반납</a></li>
 					    </ul>
 				</li>
 				
@@ -63,7 +64,7 @@
 							<li><a href="/approval">회비납부</a></li>
 					    </ul>
 				</li>
-				<li><a href="#">로그아웃</a></li>
+				<li><a href="/logout">${adminId} 로그아웃</a></li>
 			</ul>
 		</div>
 	</div>

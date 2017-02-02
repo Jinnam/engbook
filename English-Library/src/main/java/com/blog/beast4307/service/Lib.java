@@ -1,47 +1,32 @@
 package com.blog.beast4307.service;
 
 public class Lib {
-	private int LIBCODE;
-	private String LIBNAME;
-	private String LIBLOCATION;
-	
-	
-	public int getLIBCODE() {
-		return LIBCODE;
+	private int libCode;
+	private String libName;
+	private String libLocation;
+	public int getLibCode() {
+		return libCode;
 	}
-
-
-	public void setLIBCODE(int lIBCODE) {
-		LIBCODE = lIBCODE;
+	public void setLibCode(int libCode) {
+		this.libCode = libCode;
 	}
-
-
-	public String getLIBNAME() {
-		return LIBNAME;
+	public String getLibName() {
+		return libName;
 	}
-
-
-	public void setLIBNAME(String lIBNAME) {
-		LIBNAME = lIBNAME;
+	public void setLibName(String libName) {
+		this.libName = libName;
 	}
-
-
-	public String getLIBLOCATION() {
-		return LIBLOCATION;
+	public String getLibLocation() {
+		return libLocation;
 	}
-
-
-	public void setLIBLOCATION(String lIBLOCATION) {
-		LIBLOCATION = lIBLOCATION;
+	public void setLibLocation(String libLocation) {
+		this.libLocation = libLocation;
 	}
-
-
 	@Override
 	public String toString() {
-		return "Lib [LIBCODE=" + LIBCODE + ", LIBNAME=" + LIBNAME + ", LIBLOCATION=" + LIBLOCATION + "]";
+		return "Lib [libCode=" + libCode + ", libName=" + libName + ", libLocation=" + libLocation + "]";
 	}
-
-
-
+	
+	
 	
 }
